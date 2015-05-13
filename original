@@ -1,0 +1,27 @@
+phone_number = ['555-555-5555','111-111-1111','555-555-5456','999-922-9100']
+
+# method separates individual digits
+
+def digits(n)
+    Math.log10(n).floor.downto(0).map { |i| (n / 10**i) % 10 }
+end
+
+=begin
+hardcoded array indexes to turn into an integer and add sum
+=end
+
+index_zero = digits(phone_number[0].delete('-').to_i).inject(:+)
+
+index_one = digits(phone_number[1].delete('-').to_i).inject(:+)
+
+index_two = digits(phone_number[2].delete('-').to_i).inject(:+)
+
+index_three = digits(phone_number[3].delete('-').to_i).inject(:+)
+
+
+#totals equal sum of each phone number index value
+
+totals = [index_zero, index_one, index_two, index_three]
+largest_index = totals.each_with_index.max[1]
+
+print "#{phone_number[largest_index]}"
